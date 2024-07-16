@@ -1,0 +1,13 @@
+<p>home works!</p>
+<button mat-stroked-button color="accent">test</button>
+<button mat-flat-button color="accent">test2</button>
+<div class="home">
+    <div class="list">
+        <app-location-list *ngIf="list.length" [setList]="list"></app-location-list>
+    </div>
+    <div class="map">
+        <app-map (output)="setList($event)"></app-map>
+    </div>
+    
+    
+</div>

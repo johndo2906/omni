@@ -1,0 +1,15 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    .list{
+        width: 30vw;
+        height:80vh;
+        overflow: auto;
+        
+          
+    }
+    .map{
+        width: 60vw;
+        height:80vh;
+    }
+}
