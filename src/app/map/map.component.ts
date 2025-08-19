@@ -176,7 +176,7 @@ export class MapComponent implements OnInit, OnChanges {
           this.markers.push(marker);
           this.cdr.markForCheck()
         } else {
-      console.error('Geocode was not successful for the following reason: ' + status);
+          //console.error('Geocode was not successful for the following reason: ' + status);
         }
       });
       
