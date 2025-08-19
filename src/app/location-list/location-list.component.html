@@ -2,6 +2,10 @@
 
   <mat-selection-list #shoes [multiple]="false">
     @for (location of location_list; track location) {
-      <mat-list-option [value]="location">{{location.name}}</mat-list-option>
+      
+      <mat-list-option [value]="location" (click)="selectItem(location)">
+        <span matListItemTitle>{{location.name}}</span>
+        <span matListItemLine>{{location.address}}</span>
+      </mat-list-option>
     }
   </mat-selection-list>

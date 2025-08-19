@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { Location } from '../home/home.component';
 
@@ -12,19 +12,29 @@ import { Location } from '../home/home.component';
   templateUrl: './location-list.component.html',
   styleUrl: './location-list.component.scss'
 })
-export class LocationListComponent implements OnInit{
+export class LocationListComponent implements OnInit, OnChanges{
   location_list:Location[] = []
-  @Input() set setList(list:any[]){
-    this.location_list = list
+  @Input() set setList(list:{list:any[],counter:number}){
+    this.location_list = list.list
     console.log(list);
     
-  }
-  constructor(){
+    this.cdr.detectChanges()
 
   }
+  constructor(private cdr:ChangeDetectorRef){
 
-  ngOnInit(): void {
-    console.log(this.location_list);
-    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes){
+      console.log(changes);
+      
+    }
+  }
+
+  ngOnInit(): void {    
+  }
+  selectItem(item:any){
+    console.log(item);
+
   }
 }

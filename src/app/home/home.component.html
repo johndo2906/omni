@@ -1,13 +1,38 @@
-<p>home works!</p>
-<button mat-stroked-button color="accent">test</button>
-<button mat-flat-button color="accent">test2</button>
-<div class="home">
-    <div class="list">
-        <app-location-list *ngIf="list.length" [setList]="list"></app-location-list>
+<!-- First Layout -->
+
+<div class="container">
+    <mat-toolbar color="primary" class="top-nav">
+        <button mat-flat-button>Ominight</button>
+    </mat-toolbar>
+    <div [hidden]="showMapLayout" [@fadeSlide]>
+        <div class="search" style="margin:200px">
+            <mat-form-field appearance="outline">
+            <mat-label>Enter a location</mat-label>
+            <input matInput type="text" #searchInput [value]="address" placeholder="Search for a place">
+            </mat-form-field>
+            <button mat-raised-button color="accent" style="margin: 20px; margin-bottom: 40px"
+            (click)="address = searchInput.value; goToMap(searchInput.value);">Search</button>
+        </div>
     </div>
-    <div class="map">
-        <app-map (output)="setList($event)"></app-map>
+  
+  <!-- Second Layout -->
+    <div [hidden]="!showMapLayout" [@fadeSlide]>
+        <div class="search">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter a location</mat-label>
+                <input id="search-input" matInput type="text" #searchInput2 [value]="address" placeholder="Search for a place">
+            </mat-form-field>
+            <button mat-raised-button color="accent" style="margin: 20px; margin-bottom: 40px"
+                (click)="address = searchInput2.value">Search
+            </button>
+        </div>
     </div>
-    
-    
+    <div class="home" *ngIf="address">
+        <div class="list">
+            <app-location-list *ngIf="list.length" [setList]="{ list, counter }"></app-location-list>
+        </div>
+        <div class="map">
+            <app-map (output)="setList($event)" [address]="address"></app-map>
+        </div>
+    </div>
 </div>

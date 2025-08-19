@@ -1,15 +1,25 @@
-.home{
-    display: flex;
-    flex-direction: row;
-    .list{
-        width: 30vw;
-        height:80vh;
-        overflow: auto;
-        
-          
+.container{
+    height:97vh;
+    background-color: #303030;
+    .top-nav{
+        background: rgba(33, 33, 33, .98);
     }
-    .map{
-        width: 60vw;
-        height:80vh;
+    .search{
+        //margin:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .home{
+        display: flex;
+        flex-direction: row;
+        .list{
+            width: 35vw;
+            height:60vh;
+            overflow: auto;        
+        }
+        .map{
+            width: 63vw;
+        }
     }
 }
